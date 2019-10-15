@@ -126,7 +126,7 @@ case $1 in
       <% if_p('node_exporter.collector.runit.service_dir') do |service_dir| %> \
       --collector.runit.servicedir="<%= service_dir %>" \
       <% end %> \
-      --collector.supervisord.url="http://localhost:<%= p('node_exporter.web.port') %>/RPC2" \
+      --collector.supervisord.url="http://localhost:9292/RPC2" \
       <% if_p('node_exporter.collector.systemd.unit_whitelist') do |unit_whitelist| %> \
       --collector.systemd.unit-whitelist="<%= unit_whitelist %>" \
       <% end %> \
@@ -157,7 +157,7 @@ case $1 in
        <%= enabled ? "--collector.#{collector}" : "--no-collector.#{collector}" %> \
       <% end %> \
       <% end %> \
-      --web.listen-address=":<%= p('node_exporter.web.port') %>" \
+      --web.listen-address=":9292" \
       <% if_p('node_exporter.web.telemetry_path') do |telemetry_path| %> \
       --web.telemetry-path="<%= telemetry_path %>" \
       <% end %> \
